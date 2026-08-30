@@ -11,8 +11,8 @@
 class RRFreenove4WDCarSonar
 {
 private:
-	// The speed of sound is 340 m/s or 29.4 microseconds per centimeter.
-	const float PingTimeToDistanceRatio = 58.8;
+	// The speed of sound is 343 m/s or 29.15 microseconds per centimeter.
+	const float PingTimeToDistanceRatio = 58.3;
 	byte _trigPin;
 	byte _echoPin;
 	float _maxDistance;

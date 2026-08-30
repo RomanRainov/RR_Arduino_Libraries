@@ -178,3 +178,18 @@ void RRFreenove4WDCarDriver::leds(int speedValue, int turnValue)
     _strip.setLedColor(6, Yellow);
   }
 }
+
+void RRFreenove4WDCarDriver::setLedColor(byte led, LedColor color){
+	_strip.setLedColor(led, color);		
+}
+
+void RRFreenove4WDCarDriver::setLedsColor(byte leds[], LedColor color){
+	for (int i = 0; i < LedsCount; i++)
+	{
+		setLedColor(leds[i], color);
+	}	
+}
+
+void RRFreenove4WDCarDriver::setAllLedsColor(LedColor color){
+	_strip.setAllLedsColor(color);
+}

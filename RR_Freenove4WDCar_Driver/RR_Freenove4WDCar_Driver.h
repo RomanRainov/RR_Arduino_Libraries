@@ -23,6 +23,8 @@ enum LedColor
 	Green = 0x00FF00
 };
 
+const byte LedsCount = 10;
+
 class RRFreenove4WDCarDriver
 {
 private:
@@ -70,6 +72,10 @@ public:
 
 	void rotateLeft(byte speed);
 	void rotateRight(byte speed);
+
+	void setLedColor(byte led, LedColor color);
+	void setLedsColor(byte leds[], LedColor color);
+	void setAllLedsColor(LedColor color);
 };
 
 #endif

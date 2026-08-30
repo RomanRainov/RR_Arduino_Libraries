@@ -19,6 +19,10 @@ public:
 	void on();
 	void off();
 	void beep(unsigned int delaySeconds);
+
+	void toneOn(unsigned int frequency);
+	void toneOn(unsigned int frequency, unsigned long duration);
+	void toneOff();
 };
 
 #endif
