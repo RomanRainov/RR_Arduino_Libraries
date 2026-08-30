@@ -1,0 +1,56 @@
+schema_version: 1
+scope: library-repository
+repository: RomanRainov/RR_Arduino_Libraries
+branch: main
+
+target:
+  board_family: Arduino Uno compatible
+  fqbn_observed_in_project: arduino:avr:uno
+  mcu: ATmega328P
+  logic_voltage_v: 5.0
+
+libraries:
+  RR_Freenove4WDCar_Battery:
+    hardware: [ADC]
+    default_pin: A0
+    serial_debug_macro_enabled: true
+  RR_Freenove4WDCar_Buzzer:
+    hardware: [GPIO]
+    default_pin: A0
+    public_api: [on, off, beep]
+    tone_api: false
+  RR_Freenove4WDCar_Driver:
+    dependencies: [RR_Freenove4WDCar_Motor, Freenove_WS2812B_RGBLED_Controller]
+    i2c_address: 0x20
+    led_count: 10
+    public_led_api: false
+  RR_Freenove4WDCar_Motor:
+    default_direction_pin: 4
+    default_pwm_pin: 6
+    default_battery_pin: A0
+    min_speed: 80
+    max_speed: 250
+    start_speed: 100
+    voltage_compensation: {code_present: true, active: false, reason: "unreachable after early return in getFixedSpeed()"}
+  RR_Freenove4WDCar_Servo:
+    timer_on_atmega328p: TIMER1
+  RR_Freenove4WDCar_Sonar:
+    model: HC-SR04
+    pulsein_timeout: false
+
+known_consumer_pin_map:
+  D2: servo
+  D3: right_motor_direction
+  D4: left_motor_direction
+  D5: right_motor_pwm
+  D6: left_motor_pwm
+  D7: sonar_trig
+  D8: sonar_echo
+  A0: [battery_adc, buzzer]
+  A4: i2c_sda
+  A5: i2c_scl
+
+intentional_multiplex:
+  - {pin: A0, roles: [battery_adc, buzzer]}
+
+unknown: [exact Freenove PCB revision, exact motor-driver IC, exact servo model, regulator current limits]
