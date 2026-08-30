@@ -1,0 +1,17 @@
+# Питание
+
+Код battery measurement предполагает:
+- 5 V ADC reference;
+- 10-bit ADC;
+- внешний делитель примерно 1:4.
+
+Motor header содержит `MAX_VOLTAGE = 7.4`, но это программная константа, не electrical absolute maximum.
+
+UNKNOWN / NEEDS VERIFICATION:
+- exact motor-driver IC;
+- regulator topology/current;
+- motor stall current;
+- servo peak current;
+- exact installed 18650 cells and protection.
+
+Не выводить допустимые токи и напряжения из PWM диапазона или имён констант.
